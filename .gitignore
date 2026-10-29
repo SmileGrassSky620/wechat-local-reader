@@ -1,0 +1,20 @@
+# 依赖
+node_modules/
+__pycache__/
+*.pyc
+
+# 绝不提交：密钥、解密产物、测试夹具
+keys*.json
+master.key
+master.key.txt
+decrypted/
+plugin/dev/fixture/
+*.db
+*.db-wal
+*.db-shm
+
+# 本机日志 / 编辑器
+*.log
+.DS_Store
+Thumbs.db
+.vscode/

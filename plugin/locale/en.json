@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "WeChat History",
+    "description": "Read local WeChat 4.x chat history: sessions, messages, full-text search, contacts. Read-only; never modifies WeChat data."
+  }
+}
