@@ -110,9 +110,10 @@ export function apply(ctx, config = {}) {
     async execute() {
       try {
         const account = resolveAccount(cfg)
+        let keys
         const sessions = (() => {
           try {
-            const keys = ensureKeys(account, cfg)
+            keys = ensureKeys(account, cfg)
             const contacts = loadContacts(account, keys, cfg)
             return listSessions(account, keys, contacts, 500, cfg)
           } catch (err) {
@@ -146,6 +147,7 @@ export function apply(ctx, config = {}) {
         }
         // 消息库结构自检：表名规则变了能马上看出来
         try {
+          if (!keys) throw new Error('数据库密钥未取得，跳过结构检查')
           const schema = withDb(account, keys, 'message/message_0.db', (db) => {
             const tables = db.prepare("SELECT name FROM sqlite_master WHERE type='table'").all().map((r) => r.name)
             return {
